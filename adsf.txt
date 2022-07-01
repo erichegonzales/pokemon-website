@@ -1,0 +1,15 @@
+ const removeBtn = document.createElement('button') // creates element for delete button
+    removeBtn.textContent = "Delete"
+    document.body.append(removeBtn)
+    removeBtn.addEventListener('click', () => {
+        img.remove()
+        h3.remove()
+        audio.remove()
+        removeBtn.remove()
+    })
+
+    // to remove pokemon
+    // add dynamically
+    // create a button element
+    // need to append it to the <div> pokemon roster for each pokemon
+    // should add it to the div

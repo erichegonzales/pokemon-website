@@ -28,9 +28,9 @@ const pokemon = [
 // empty array for the roster
 const userRoster = []
 
-const containerDiv = document.querySelector('#container') // storing the roster with <button> and <div>
-const newBtn = document.querySelector('#new-pokemon-btn') // storing the button for adding new pokemon
-const rosterDiv = document.querySelector('#roster') // storing the roster <div> element
+const containerDiv = document.querySelector('#container') // select the roster with <button> and <div>
+const newBtn = document.querySelector('#new-pokemon-btn') // select the button for adding new pokemon
+const rosterDiv = document.querySelector('#roster') // select the roster <div> element
 
 // button for new pokemon
 newBtn.addEventListener('click', async () => {
@@ -38,7 +38,7 @@ newBtn.addEventListener('click', async () => {
     if (userRoster.length === 6) {
         return alert('ROSTER IS FULL')
     }
-    
+
     // creates an input for user to enter a pokemon number
     let num = prompt('ENTER A POKEMON NUMBER') // alert on website that tells user to enter a pokemon number 
 
@@ -65,17 +65,28 @@ newBtn.addEventListener('click', async () => {
     source.setAttribute('type', 'audio/mpeg') // attaches type of source
     audio.append(source) // appends the source to the audio element
 
+const removeBtn = document.createElement('button') // creates element for delete button
+
     let h3 = document.createElement('h3') // create <h3> element
     h3.innerText = name // adds the name to the <h3> element
     let img = document.createElement('img') // create element for the image
     img.setAttribute("src", imgUrl) // links the image to the URL source
     img.setAttribute('class', 'roster-img') // add class attribute to image
     let position = document.querySelector(`#pokemon-${userRoster.length + 1}`) // selects all the pokemon elements
-    position.append(img, h3, audio) // appends these elements to the pokemon roster
+    position.append(img, h3, removeBtn,audio) // appends these elements to the pokemon roster
     position.addEventListener('click', () => { // plays the pokemon audio when you click
         audio.play()
     })
     userRoster.push(num) // adds the pokemon to the roster array
+    
+    removeBtn.textContent = "Delete"
+    // document.body.append(removeBtn)
+    removeBtn.addEventListener('click', () => {
+        img.remove()
+        h3.remove()
+        audio.remove()
+        removeBtn.remove()
+    })
 })
 
 // function to create pokemon
