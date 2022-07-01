@@ -54,3 +54,18 @@ div[id^="pokemon-"] {
     margin: 7 auto;
     display: block;
 }
+
+@keyframes flash {
+    0% {
+        background-color: green;
+        /* can add rotate */
+    }
+
+    50% {
+        background-color: blue;
+    }
+
+    100% {
+        background-color: orange;
+    }
+}
