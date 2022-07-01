@@ -30,15 +30,25 @@ const userRoster = []
 
 const containerDiv = document.querySelector('#container') // storing the roster container with <button> and <div>
 const newBtn = document.querySelector('#new-pokemon-btn') // storing the button for adding new pokemong
-const rosterDiv = document.querySelector('#roster') // stroing the roster <div> element
+const rosterDiv = document.querySelector('#roster') // storing the roster <div> element
 
 // button for new pokemon
 // event that occurs when button is clicked
 newBtn.addEventListener('click', async () => {
+    if (userRoster.length === 6) {
+        return alert('ROSTER IS FULL')
+    }
+    
     let num = prompt('ENTER A POKEMON NUMBER') // alert on website that tells user to enter a pokemon number 
 
+    // adds leading zeros for imgUrl
     if (num.length === 2) numZeros = "0" + num
-    if (num.length === 1) numZeros = "00" + num
+    else if (num.length === 1) numZeros = "00" + num
+    else numZeros = num;
+
+    // remove leading zeros for dataUrl
+    num = parseInt(num, 10)
+    console.log('this is', num)
 
     console.log('Number entered: ', numZeros) // prints the number entered to DOM
     let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${numZeros}.png` // URL to images of pokemon
